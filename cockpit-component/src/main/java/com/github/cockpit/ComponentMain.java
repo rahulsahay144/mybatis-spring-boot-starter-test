@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -23,6 +24,7 @@ import java.util.List;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
+@EnableTransactionManagement
 @MapperScan("com.github.cockpit.mapper")
 public class ComponentMain {
 

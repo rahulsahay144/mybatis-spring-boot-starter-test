@@ -1,8 +1,10 @@
 spring:
   datasource:
+
     type: com.zaxxer.hikari.HikariDataSource
     continue-on-error: false
     jmx-enabled: true
+
 
     hikari:
       pool-name: Cockpit-Pool
@@ -11,7 +13,6 @@ spring:
       login-timeout: 100
       max-lifetime: 120
 
-
       connection-init-sql: SELECT x'417574686F723A204173696E204C6975'
       connection-test-query: SELECT 1
       connection-timeout: 5000
@@ -19,7 +20,7 @@ spring:
 
       minimum-idle: 1
       idle-timeout: 120
-      auto-commit: true
+      auto-commit: false
       initializationFailTimeout: 200
       register-mbeans: false
       leak-detection-threshold: 80
