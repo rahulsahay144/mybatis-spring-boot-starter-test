@@ -41,7 +41,7 @@ public class ComponentMainTest {
 
         Assert.assertFalse(usrs == null);
         System.out.println(usrs.size());
-        //Assert.assertTrue(usrs.size() == 0);
+        Assert.assertTrue(usrs.size() == 0);
 
         Assert.assertFalse(frs == null);
         System.out.println(frs.size());
