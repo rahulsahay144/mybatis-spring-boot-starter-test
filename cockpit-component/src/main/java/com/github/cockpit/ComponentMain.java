@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,7 +38,7 @@ public class ComponentMain {
     CommandLineRunner commandLineRunner() {
         return (String... args) -> {
             System.out.println("Component is ready to run...");
-            System.out.println("Enjoy your style!!!");
+            System.out.println("Enjoy ur work!");
         };
     }
 }
