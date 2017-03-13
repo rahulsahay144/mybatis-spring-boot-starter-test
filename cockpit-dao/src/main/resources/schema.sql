@@ -11,6 +11,3 @@ CREATE TABLE IF NOT EXISTS test_fr(
   name VARCHAR(32) NOT NULL COMMENT ''
 
 );
-
-INSERT INTO test_usr(account,phone,password) VALUES ('0002','11111','aaa'),('0003','2222','bbb');
-INSERT INTO test_fr(name) VALUES ('Hello');
