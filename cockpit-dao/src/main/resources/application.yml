@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    continue-on-error: false
+    jmx-enabled: true
+
+    hikari:
+      pool-name: Cockpit-Pool
+      maximum-pool-size: 30
+      allow-pool-suspension: true
+      login-timeout: 100
+      max-lifetime: 120
+
+
+      connection-init-sql: SELECT x'417574686F723A204173696E204C6975'
+      connection-test-query: SELECT 1
+      connection-timeout: 5000
+      validation-timeout: 3000
+
+      minimum-idle: 1
+      idle-timeout: 120
+      auto-commit: true
+      initializationFailTimeout: 200
+      register-mbeans: false
+      leak-detection-threshold: 80
+  aop:
+    proxy-target-class: true
+
+mybatis:
+  # check-config-location: true
+  # config-location: classpath*:**/mappers/*.xml
+  # type-handlers-package:
+  executor-type: simple
+  type-aliases-package: com.github.cockpit.domain
+  mapper-locations: classpath*:**/mappers/*.xml
+  configuration:
+    cache-enabled: true
+
+
