@@ -32,21 +32,39 @@ public class ComponentMainTest {
     @Resource
     FrMapper frMapper;
 
-    @Test
-    public void addNewTwoTest() throws Exception {
-        component.addNewTwo();
 
+    /**
+     * Programmatic Transaction Management is OK !!!
+     */
+    @Test
+    public void addNewTwoTest() {
+        component.addNewTwo();
         List<Usr> usrs =  usrMapper.listUsrByAccount("Asin");
         List<Fr> frs = frMapper.getFrByName("Ray");
 
         Assert.assertFalse(usrs == null);
-        System.out.println(usrs.size());
+        Assert.assertTrue(usrs.size() == 0);
+        Assert.assertFalse(frs == null);
+        Assert.assertTrue(frs.size() == 0);
+
+    }
+
+
+    /**
+     * Annotation Transaction Management has no effort
+     */
+    @Test
+    public void addNewTwoWithAnnotationTest() {
+        component.addNewTwoWithAnnotation();
+
+        List<Usr> usrs = usrMapper.listUsrByAccount("Asin");
+        List<Fr> frs = frMapper.getFrByName("Ray");
+
+        Assert.assertFalse(usrs == null);
         Assert.assertTrue(usrs.size() == 0);
 
         Assert.assertFalse(frs == null);
-        System.out.println(frs.size());
         Assert.assertTrue(frs.size() == 0);
-
     }
 
 
