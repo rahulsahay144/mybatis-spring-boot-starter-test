@@ -8,10 +8,13 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -24,10 +27,8 @@ import java.util.List;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-@EnableTransactionManagement
 @MapperScan("com.github.cockpit.mapper")
 public class ComponentMain {
-
 
     @Resource
     UsrFrComponent component;
@@ -42,5 +43,16 @@ public class ComponentMain {
             System.out.println("Component is ready to run...");
             System.out.println("Enjoy ur work!");
         };
+    }
+
+    /**
+     * Test the which transaction manager is used.
+     * @param platformTransactionManager
+     * @return
+     */
+    @Bean
+    public Object testBean(PlatformTransactionManager platformTransactionManager){
+        System.out.println(">>>>>>>>>> " + platformTransactionManager.getClass().getName());
+        return new Object();
     }
 }

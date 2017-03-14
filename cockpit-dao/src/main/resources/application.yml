@@ -1,6 +1,9 @@
 spring:
   datasource:
-
+    # driver-class-name: com.mysql.jdbc.Driver
+    # url: jdbc:mysql://10.10.220.154:3306/puhui_settlement?useUnicode=true&amp;characterEncoding=utf-8
+    # username: root
+    # password: PuhuiTest001
     type: com.zaxxer.hikari.HikariDataSource
     continue-on-error: false
     jmx-enabled: true
@@ -33,7 +36,7 @@ mybatis:
   # type-handlers-package:
   executor-type: simple
   type-aliases-package: com.github.cockpit.domain
-  mapper-locations: classpath*:**/mappers/*.xml
+  # mapper-locations: classpath*:**/mappers/*.xml
   configuration:
     cache-enabled: true
 

@@ -27,6 +27,7 @@ public class ComponentMainTest {
     @Resource
     UsrFrComponent component;
 
+
     @Resource
     UsrMapper usrMapper;
     @Resource
@@ -39,7 +40,7 @@ public class ComponentMainTest {
     @Test
     public void addNewTwoTest() {
         component.addNewTwo();
-        List<Usr> usrs =  usrMapper.listUsrByAccount("Asin");
+        List<Usr> usrs = usrMapper.listUsrByAccount("Asin");
         List<Fr> frs = frMapper.getFrByName("Ray");
 
         Assert.assertFalse(usrs == null);
@@ -55,16 +56,23 @@ public class ComponentMainTest {
      */
     @Test
     public void addNewTwoWithAnnotationTest() {
-        component.addNewTwoWithAnnotation();
+        org.mybatis.spring.SqlSessionUtils utils = null;
+        try {
+            component.addNewTwoWithAnnotation();
+            List<Usr> usrs = usrMapper.listUsrByAccount("Asin");
+            List<Fr> frs = frMapper.getFrByName("Ray");
 
-        List<Usr> usrs = usrMapper.listUsrByAccount("Asin");
-        List<Fr> frs = frMapper.getFrByName("Ray");
+            Assert.assertFalse(usrs == null);
+            Assert.assertTrue(usrs.size() == 0);
 
-        Assert.assertFalse(usrs == null);
-        Assert.assertTrue(usrs.size() == 0);
+            Assert.assertFalse(frs == null);
+            Assert.assertTrue(frs.size() == 0);
+        } catch (Exception e) {
+            System.out.println("Caught exception from component.");
+            System.out.println(e.toString());
+            System.out.println(e.getMessage());
+        }
 
-        Assert.assertFalse(frs == null);
-        Assert.assertTrue(frs.size() == 0);
     }
 
 

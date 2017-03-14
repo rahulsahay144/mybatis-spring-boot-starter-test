@@ -20,19 +20,21 @@ import javax.annotation.Resource;
  */
 @Component
 public class UsrFrComponent {
+
     @Resource
     private UsrMapper usrMapper;
+
     @Resource
     private FrMapper frMapper;
 
 
     @Resource
-    DataSourceTransactionManager txManager ;
+    DataSourceTransactionManager txManager;
 
 
     /**
-     * @Transaction  has no efforts.
-     *
+     * @Transaction has no efforts.
+     * <p>
      * Why??
      */
 
@@ -42,12 +44,12 @@ public class UsrFrComponent {
             usrMapper.addNew("Asin", "01200365", "pxuuxTest");
             divByZero(1, 0);
             frMapper.addNewFr("Ray");
-
             System.out.println("addNewTwo runs without exception.");
 
         } catch (Exception e) {
             System.out.println("Is exception a RuntimeException: " + (e instanceof RuntimeException));
             System.out.println("Caught exception :" + e.toString());
+            throw e;
         }
     }
 
@@ -59,14 +61,12 @@ public class UsrFrComponent {
         try {
             DefaultTransactionDefinition def = new DefaultTransactionDefinition();
             def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-
             TransactionStatus status = txManager.getTransaction(def);
             try {
                 usrMapper.addNew("Asin", "01200365", "uuuuu");
                 divByZero(1, 0);
                 frMapper.addNewFr("Ray");
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 txManager.rollback(status);
                 throw ex;
             }
@@ -82,7 +82,7 @@ public class UsrFrComponent {
         try {
             return x / y;
         } catch (Exception e) {
-            throw new RuntimeException();
+            throw new RuntimeException("This is the message of exception");
         }
     }
 }

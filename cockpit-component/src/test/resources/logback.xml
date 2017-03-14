@@ -12,10 +12,9 @@
     <!-- ch.qos.logback.core.rolling.RollingFileAppender 文件日志输出 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>access.log</File>
-
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <MaxHistory>180</MaxHistory>
-            <FileNamePattern>access-%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+            <FileNamePattern>access-%d{yyyy-MM-dd}_%i.log.zip</FileNamePattern>
             <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <MaxFileSize>50MB</MaxFileSize>
             </TimeBasedFileNamingAndTriggeringPolicy>
@@ -26,6 +25,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
+
     <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
         <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
         <discardingThreshold>0</discardingThreshold>
@@ -53,7 +53,8 @@
     </appender>
 
     <logger name="org.springframework.transaction" level="debug"/>
-
+    <logger name="org.mybatis.spring" level="debug"/>
+    <logger name="com.github.cockpit.mapper" level="debug"/>
 
     <logger name="java.sql.PreparedStatement" level="debug"/>
     <logger name="java.sql.ResultSet" level="debug"/>
