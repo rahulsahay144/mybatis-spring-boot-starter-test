@@ -38,6 +38,7 @@ public class ComponentMain {
 
         SpringApplication app = new SpringApplication(ComponentMain.class);
         app.setBannerMode(Banner.Mode.OFF);
+        app.setWebEnvironment(false);
         app.run(args);
     }
 
