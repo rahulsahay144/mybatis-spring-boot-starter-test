@@ -22,8 +22,6 @@ public class MapperMainTest {
 
     @Resource
     FrMapper frMapper;
-
-
     @Test
     public void queryUseCahceTest() {
         String name = "queryMybatisCache";
@@ -32,5 +30,4 @@ public class MapperMainTest {
             frMapper.getFrByName(name);
         }
     }
-
 }

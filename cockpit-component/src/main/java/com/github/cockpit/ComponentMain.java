@@ -2,6 +2,7 @@ package com.github.cockpit;
 
 import com.github.cockpit.component.UsrFrComponent;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -34,7 +35,10 @@ public class ComponentMain {
     UsrFrComponent component;
 
     public static void main(String[] args) {
-        SpringApplication.run(ComponentMain.class, args);
+
+        SpringApplication app = new SpringApplication(ComponentMain.class);
+        app.setBannerMode(Banner.Mode.OFF);
+        app.run(args);
     }
 
     @Bean
