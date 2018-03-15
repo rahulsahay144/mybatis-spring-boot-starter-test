@@ -1,2 +1,2 @@
 # mybatis-spring-boot-starter-test
-Demo of mybatis-spring-boot-starter
+Demo for https://github.com/mybatis/spring-boot-starter/issues/146
